@@ -1,11 +1,19 @@
 package org.campus02;
 
+import java.util.ArrayList;
+
 public class Sum {
 
     public static void main(String[] args) {
         System.out.println(sumUpIterative(3));
         System.out.println(sumUpRecursive(3));
         System.out.println(sumUpRecursiveAcc(3, 0));
+        ArrayList<Integer> values = new ArrayList<>(); // STRG + ALT + v -> variable erzeugen lassen
+        values.add(3);
+        values.add(2);
+        values.add(3);
+        System.out.println(iterativeSum(values));
+        System.out.println(recursiveSum(values));
     }
 
     public static int sumUpRecursiveAcc(int n, int acc) {
@@ -35,5 +43,26 @@ public class Sum {
         }
         // retourniere das Ergebnis
         return sum;
+    }
+
+    public static int iterativeSum(ArrayList<Integer> values) {
+        int sum = 0; // Zwischenspeicher der Summe
+        //for (int i = 0; i < values.size(); i++)
+        for (Integer value : values) { // for-each
+            sum += value;
+            //sum = sum + value; // andere Schreibweise zu sum += value
+        }
+        return sum; // ergebnis der addition wird zurück gegeben
+    }
+
+    public static int recursiveSum(ArrayList<Integer> values) {
+        // Abbruchsbestimmung
+        //if (values.isEmpty()) andere Möglichkeit zu ermitteln ob noch Werte in der Liste sind
+        if (values.size() == 0) {
+            return 0;
+        }
+        // gib mir den ersten Wert in der Liste und lösche in aus der Liste
+        Integer value = values.remove(0);
+        return value + recursiveSum(values); // values sind hier um 1 Eintrag kleiner
     }
 }
