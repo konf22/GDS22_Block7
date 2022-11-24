@@ -3,8 +3,8 @@ package org.campus02;
 public class Printer {
 
     public static void main(String[] args) {
-        //printFromNToZero(5);
-        //printFromNToZeroRecursive(5);
+//        printFromNToZero(5);
+//        printFromNToZeroRecursive(5);
         printFromZeroToNRecursive(5);
     }
 

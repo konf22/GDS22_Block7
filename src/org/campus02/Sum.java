@@ -1,19 +1,42 @@
 package org.campus02;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 public class Sum {
 
+    // ArrayList vs. HashSet
+    // ArrayList: geordnete Reihenfolge, Duplikate möglich, Man kann Elemente hinauflegen, herunternehmen, Länger verändert sich während der Laufzeit
+    // HashSet: keine Reihenfolge (kein Index), keine Duplikate, Man kann Elemente hinauflegen, herunternehmen, Länger verändert sich während der Laufzeit
+
+    private static List<String> numbers = new ArrayList<>();
     public static void main(String[] args) {
-        System.out.println(sumUpIterative(3));
-        System.out.println(sumUpRecursive(3));
-        System.out.println(sumUpRecursiveAcc(3, 0));
-        ArrayList<Integer> values = new ArrayList<>(); // STRG + ALT + v -> variable erzeugen lassen
-        values.add(3);
-        values.add(2);
-        values.add(3);
-        System.out.println(iterativeSum(values));
-        System.out.println(recursiveSum(values));
+//        System.out.println(sumUpIterative(3));
+//        System.out.println(sumUpRecursive(3));
+//        System.out.println(sumUpRecursiveAcc(3, 0));
+//        ArrayList<Integer> values = new ArrayList<>(); // STRG + ALT + v -> variable erzeugen lassen
+//        values.add(3);
+//        values.add(2);
+//        values.add(3);
+//        System.out.println(iterativeSum(values));
+//        System.out.println(recursiveSum(values));
+
+
+        // Bsp zu HashSet
+//        HashSet<Integer> testSet = new HashSet<>();
+//        testSet.add(1);
+//        testSet.add(2);
+//        testSet.add(1);
+//        for (Integer i : testSet) {
+//            System.out.println("i = " + i);
+//        }
+
+
+        int total = sumUpRecursive(3);
+        String joinedNumbers = String.join(" + ", numbers); // hänge bei jedem Element das "+" an, nur beim letzten nicht
+        System.out.println("joinedNumbers = " + joinedNumbers);
+        System.out.println("total = " + total);
     }
 
     public static int sumUpRecursiveAcc(int n, int acc) {
@@ -26,6 +49,8 @@ public class Sum {
     }
 
     public static int sumUpRecursive(int n) {
+        System.out.println(n + " + ");
+        numbers.add(String.valueOf(n));
         // !!!!!! Abbruchsbestimmung
         if (n <= 0) {
             return n;
