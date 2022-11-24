@@ -33,10 +33,14 @@ public class Sum {
 //        }
 
 
-        int total = sumUpRecursive(3);
-        String joinedNumbers = String.join(" + ", numbers); // hänge bei jedem Element das "+" an, nur beim letzten nicht
-        System.out.println("joinedNumbers = " + joinedNumbers);
-        System.out.println("total = " + total);
+//        int total = sumUpRecursive(3);
+//        String joinedNumbers = String.join(" + ", numbers); // hänge bei jedem Element das "+" an, nur beim letzten nicht
+//        System.out.println("joinedNumbers = " + joinedNumbers);
+//        System.out.println("total = " + total);
+
+
+        System.out.println(sumUpBetweenRecursive(5, 10));
+        System.out.println(sumUpBetweenRecursive2(5, 10));
     }
 
     public static int sumUpRecursiveAcc(int n, int acc) {
@@ -89,5 +93,28 @@ public class Sum {
         // gib mir den ersten Wert in der Liste und lösche in aus der Liste
         Integer value = values.remove(0);
         return value + recursiveSum(values); // values sind hier um 1 Eintrag kleiner
+    }
+
+    public static int sumUpBetweenRecursive(int start, int end) {
+        // Abbruchsbestimmung
+        if (start == end) {
+            return start;
+        }
+
+        return start + sumUpBetweenRecursive(start + 1, end);
+        // annahme start = 5, end = 10
+        // 5 + 6 + 7 + 8 + 9 + 10 => start
+        // end bleibt immer gleich
+        // => 45
+    }
+
+    public static int sumUpBetweenRecursive2(int start, int end) {
+        if (end == start) {
+            return end;
+        }
+
+        return end + sumUpBetweenRecursive2(start, end - 1);
+        // 10 + 9 + 8 + 7 + 6 + 5
+        // => 45
     }
 }
